@@ -1,4 +1,0 @@
-name: my-django-api
-type: python
-buildCommand: python manage.py collectstatic --noinput
-startCommand: gunicorn my_project.wsgi:application --bind 0.0.0.0:$PORT --workers 4 --log-level=info
