@@ -7,8 +7,8 @@ function App() {
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
 
-// this function will handel payment when user submit his/her money
-// and it will confim if payment is successfull or not
+  // this function will handel payment when user submit his/her money
+  // and it will confim if payment is successfull or not
   const handlePaymentSuccess = async (response) => {
     try {
       let bodyData = new FormData();
@@ -133,4 +133,4 @@ function App() {
   );
 }
 
-export default App; 
+export default App;
