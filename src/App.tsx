@@ -1,7 +1,14 @@
 import Axios from "axios";
-import React, { useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import { server } from "./server";
+
+interface RazorpayResponse {
+  razorpay_payment_id: string;
+  razorpay_order_id: string;
+  razorpay_signature: string;
+  // add more properties if needed
+}
 
 function App() {
   const [name, setName] = useState("");
@@ -9,7 +16,7 @@ function App() {
 
   // this function will handel payment when user submit his/her money
   // and it will confim if payment is successfull or not
-  const handlePaymentSuccess = async (response) => {
+  const handlePaymentSuccess = async (response: RazorpayResponse) => {
     try {
       let bodyData = new FormData();
 
@@ -78,7 +85,7 @@ function App() {
       description: "Test teansaction",
       // image: "", // add image url
       order_id: data.data.payment.id,
-      handler: function (response) {
+      handler: function (response: RazorpayResponse) {
         // we will handle success by calling handlePaymentSuccess method and
         // will pass the response that we've got from razorpay
         handlePaymentSuccess(response);
